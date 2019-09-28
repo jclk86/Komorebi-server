@@ -20,7 +20,9 @@ paymentRouter
     });
   })
   .post((req, res, next) => {
-    stripe.charges.create(req.body, postStripeCharge(res));
+    stripe.charges
+      .create(req.body, postStripeCharge(res))
+      .then(data => console.log(data));
   });
 
 module.exports = paymentRouter;
